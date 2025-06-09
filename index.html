@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/vue@3"></script> <!-- import Vue -->
+</head>
+
+<body>
+
+    <div id="app">
+
+        <p>
+            <input type="text" v-model="greeting">
+        </p>
+
+        <p>
+            <!-- print the values of a data component & use basic javascript -->
+            {{ greeting }} ({{ greeting.length }})
+        </p>
+    </div>
+
+    <script>
+        /* Initialize Vue */
+        Vue.createApp({
+            /* simple method that returns an object */
+            data() {
+                return {
+                    greeting: 'Hello World'
+                };
+            },
+
+            /* Method that fires automaticly when the component mount to the page */
+            mounted() {
+                /* Update the value of greeting after 3 seconds */
+                setTimeout(() => {
+                    this.greeting = 'changed';
+                }, 3000)
+            },
+        }).mount('#app'); /* Only mount it to an html element */
+    </script>
+</body>
+
+</html>
