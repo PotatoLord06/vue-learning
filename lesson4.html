@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lesson 4: Custom Component</title>
+    <script src="https://unpkg.com/vue@3"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+
+  <body class="h-full grid place-items-center">
+    <div id="app">
+      <app-button>Submit</app-button>
+      <app-button>Click Me</app-button>
+    </div>
+
+    <script>
+      /* Component */
+      let app = {
+        /* Custom components that work as html tags */
+        components: {
+          "app-button": {
+            template: `
+
+                <button class="bg-gray-200 hover:bg-gray-500 border rounded px-5 py-2 disabled:cursor-not-allowed" :disabled="processing">
+                    <slot/>    
+                <button>
+
+            `,
+            
+            data() {
+                return {
+                    processing: true
+                }
+            },
+
+            mounted() {
+              alert("hello");
+            },
+          },
+        },
+      };
+
+      Vue.createApp(app).mount("#app");
+    </script>
+  </body>
+</html>
